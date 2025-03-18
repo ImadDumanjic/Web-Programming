@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syncopate:wght@400;700&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#registration{
+    background-image: url('../img/background-reg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0.3, 0.4); 
+    background-blend-mode: darken;
+}
+
+.loginbtn{
+  background-color: #e1ecf4;
+  border-radius: 5px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  width: 360px;
+  color: #154360;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  margin-top: 5px;
+  padding: 9px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.loginbtn:hover,
+.loginbtn:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.loginbtn:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.loginbtn:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
+
+
+
