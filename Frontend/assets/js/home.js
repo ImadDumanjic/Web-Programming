@@ -56,7 +56,7 @@ ScrollReveal().reveal(".location__content .location__btn", {
 const selectCards = document.querySelectorAll(".select__card");
 selectCards[0].classList.add("show__info");
 
-const price = ["225", "455", "275", "625", "395"];
+const price = ["225€", "455€", "275€", "625€", "395€"];
 
 const priceEl = document.getElementById("select-price");
 

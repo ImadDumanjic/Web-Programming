@@ -436,17 +436,31 @@ nav {
   display: inline-block;
   padding: 16px 28px;
   font-size: 16px;
-  color: #15191d;
-  background-color: #f5b754; 
   border: none;
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
 }
 
-.select__btns a:hover {
-  background-color: #15191d; 
+.offers_btn {
+  background-color: #15191d;
+  color: white;
+}
+
+.offers_btn:hover {
+  background-color: #f5b754;
+  color: #15191d;
+}
+
+.rent_btn {
+  background-color: #f5b754;
+  color: #15191d;
+}
+
+.rent_btn:hover {
+  background-color: #15191d;
   color: white;
 }
 
@@ -455,15 +469,6 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 5px;
-}
-
-.select__btns .btn {
-  min-width: 135px;
-}
-
-.select__btns .btn:nth-child(2) {
-  color: var(--white);
-  background-color: var(--primary-color);
 }
 
 .story__container .section__header {

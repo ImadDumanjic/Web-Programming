@@ -129,37 +129,43 @@
     padding-bottom: 5px;
     font-family: "Poppins", sans-serif;
 }
+
 .car_box .button_container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    width: 100%;
+    gap: 6px;
+    width: 97%;
     margin-top: 10px;
 }
+
 .car_box .button, .car_box .details {
     flex: 1;
     text-align: center;
-    padding: 8px 12px;
+    padding: 8px 10px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     display: inline-block;
-    width: 45%;
+    width: 40%;
 }
+
 .car_box .button {
     background: #d6a04a;
     color: white;
     font-family: "Poppins", sans-serif;
 }
+
 .car_box .button:hover {
     background: #b8860b;
 }
+
 .car_box .details {
     padding-top: 10px;
     color: black;
     font-family: "Poppins", sans-serif;
     font-size: 14px;
 }
+
 .car_box .details:hover {
     background: black;
     color: white;
