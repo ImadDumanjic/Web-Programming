@@ -9,7 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     app.route({
         view: "offers",
-        load: "offers.html"
+        load: "offers.html",
+        onReady: function () {
+            $.getScript("./assets/js/modal.js", function () {
+                console.log("modal.js uspešno učitan!");
+                initModal(); 
+            });
+        }
     });
 
     app.route({
@@ -45,11 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function loadCSS(cssUrl) {
-        if (!document.querySelector(`link[href="${cssUrl}"]`)) {
-            let linkTag = document.createElement("link");
-            linkTag.rel = "stylesheet";
-            linkTag.href = cssUrl;
-            document.head.appendChild(linkTag);
-        }
+        document.querySelectorAll('link[data-dynamic]').forEach(link => link.remove());
+    
+        let linkTag = document.createElement("link");
+        linkTag.rel = "stylesheet";
+        linkTag.href = cssUrl;
+        linkTag.setAttribute("data-dynamic", "true");
+        document.head.appendChild(linkTag);
     }
+    
 });

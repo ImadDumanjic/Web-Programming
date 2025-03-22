@@ -43,7 +43,7 @@
 
 .special_offers h2{
     font-family: "Syncopate", sans-serif;
-    font-size: 47px;
+    font-size: 49px;
     color: #d6a04a;
     text-align: center;
     margin-top: 100px;
@@ -51,9 +51,9 @@
 
 .special_offers p{
     font-family: "Poppins", sans-serif;
-    font-size: 22px;
+    font-size: 24px;
     color: white;
-    max-width: 900px;
+    max-width: 1000px;
     text-align: center;
 }
 
@@ -63,7 +63,7 @@
 
 .heading span{
     font-family: "Poppins", sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     color: #d6a04a;
 }
 
@@ -71,7 +71,7 @@
     font-family: "Syncopate", sans-serif;
     font-weight: bold;
     font-size: 22px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .heading p{
@@ -85,17 +85,19 @@
     margin: 2rem auto;
     max-width: 1200px;
 }
+
 .cars_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
-    margin-top: 2rem;
+    margin-top: 30px;
     justify-content: center;
 }
+
 .car_box {
     background: whitesmoke;
     padding: 20px;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,24 +107,25 @@
 .car_box img {
     width: 95%;
     height: 180px;
-    margin-bottom: 1rem;
+    margin-bottom: 17px;
 }
 .car_box h3 {
-    font-size: 1.15rem;
+    font-size: 18px;
     font-weight: bold;
     text-align: left; 
     width: 100%; 
     padding-left: 10px; 
     font-family: "Poppins", sans-serif;
 }
+
 .car_box span {
-    font-size: 1rem;
+    font-size: 17px;
     font-weight: bold;
     color: #d6a04a;
     text-align: left; 
     width: 100%; 
     padding-left: 10px; 
-    padding-top: 7px;
+    padding-top: 5px;
     padding-bottom: 5px;
     font-family: "Poppins", sans-serif;
 }
@@ -241,63 +244,337 @@
     font-size: 13px;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: flex !important;
+    opacity: 1;
+}
+
+
+.modal-content {
+    background-color: white;
+    padding: 22px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 520px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2{
+    font-family: "Poppins", sans-serif;
+}
+
+.modal-content p{
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.close:hover {
+    color: #b8860b;
+}
+
+#modal-image {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
 @media (max-width: 1024px) {
     .cars_container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 1.2rem;
+    }
+
+    .special_offers h2 {
+        font-size: 33px;
+        margin-top: 30px;
+        text-align: center;
+        line-height: 1.2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .special_offers h2 br {
+        display: none; 
+    }
+
+    .special_offers p {
+        font-size: 17px;
+        line-height: 1.5;
+        max-width: 85%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .special_offers nav{
+        display: none;
+    }
+
+    .car_box h3, .car_box span {
+        font-size: 17px;
+        padding-left: 10px;
+    }
+
+    .car_box .button, .car_box .details {
+        font-size: 13px;
+        padding: 9px 14px;
+        margin-left: 10px;
+    }
+
+    .car_box img {
+        height: 250px;
     }
 
     .footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 30px 5%;
     }
 
-    .footer-column {
+    .footer-col {
         margin-bottom: 20px;
     }
-}
 
-@media (max-width: 768px) {
-    .cars_container {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .special_offers h2 {
-        font-size: 36px;
-    }
-
-    .special_offers p {
+    .social-icons a {
+        margin-left: 15px;
+        width: 40px;
+        height: 40px;
         font-size: 18px;
     }
 
-    .footer {
-        padding: 30px 5%;
-    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    
     .special_offers h2 {
         font-size: 28px;
+        margin-top: 30px;
+        text-align: center;
+        line-height: 1.2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .special_offers h2 br {
+        display: none; 
     }
 
     .special_offers p {
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 85%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .special_offers nav{
+        display: none;
     }
 
     .cars_container {
-        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 20px;
+    }
+
+    .car_box {
+        padding: 50px;
+    }
+
+    .car_box img {
+        height: 300px;
+    }
+
+    .car_box h3, .car_box span {
+        margin-left: 8px;
+        font-size: 17px;
+        padding-left: 17px;
+    }
+
+    .car_box .button, .car_box .details {
+        font-size: 13px;
+        padding: 9px 14px;
+        margin-left: 15px;
     }
 
     .footer {
-        padding: 20px 5%;
+        padding: 15px 15%;
     }
 
     .footer-col h3 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .footer-col ul li a {
-        font-size: 14px;
+        font-size: 12px;
+    }
+
+    .social-icons a {
+        margin-left: 20px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .copyright {
+        font-size: 12px;
+        padding: 12px;
     }
 }
+
+
+
+@media (max-width: 480px) {
+    .special_offers h2 {
+        font-size: 26px;
+    }
+
+    .special_offers p {
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .cars_container {
+        gap: 1rem;
+    }
+
+    .car_box img {
+        height: 140px;
+    }
+
+    .car_box h3, .car_box span {
+        font-size: 14px;
+        padding-left: 5px;
+    }
+
+    .car_box .button, .car_box .details {
+        font-size: 13px;
+        padding: 7px 10px;
+        margin-left: 10px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .footer {
+        padding: 15px 5%;
+    }
+
+    .footer-col h3 {
+        font-size: 15px;
+    }
+
+    .footer-col ul li a {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 375px) {
+    .navbar {
+        display: none !important; 
+    }
+
+    .special_offers {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px 15px; 
+        text-align: center;
+    }
+
+    .special_offers h2 {
+        font-size: 22px;
+        margin-top: 10px;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .special_offers p {
+        font-size: 12px;
+        line-height: 1.4;
+        padding: 0 10px;
+        max-width: 320px;
+        text-align: center;
+    }
+
+    .cars_container {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .car_box h3, .car_box span {
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    .car_box .button, .car_box .details {
+        font-size: 10px;
+        padding: 3px 5px;
+    }
+
+    .footer {
+        padding: 10px 5%;
+    }
+
+    .footer-col h3 {
+        font-size: 13px;
+    }
+
+    .footer-col ul li a {
+        font-size: 11px;
+    }
+
+    .social-icons a {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .copyright {
+        font-size: 10px;
+        padding: 10px;
+    }
+}
+

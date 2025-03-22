@@ -143,6 +143,12 @@ nav {
   display: none;
 }
 
+.nav__btn .btn:hover{
+  background-color: #15191d;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
 .header__container {
   position: relative;
   isolation: isolate;
@@ -424,6 +430,24 @@ nav {
 
 .select__price span:not(#select-price) {
   font-weight: 400;
+}
+
+.select__btns a {
+  display: inline-block;
+  padding: 16px 28px;
+  font-size: 16px;
+  color: #15191d;
+  background-color: #f5b754; 
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.select__btns a:hover {
+  background-color: #15191d; 
+  color: white;
 }
 
 .select__btns {
