@@ -1,1 +1,1 @@
-# Web-Programming
+The Car Rental System is a web-based application designed to simplify and streamline the process of renting vehicles. The system allows users to browse available cars, see their specification and make reservations for specific time periods. Administrators can manage the fleet, monitor reservations, and oversee user accounts. The main goal of the project is to digitalize the car rental process and enhance the user experience through a modern, responsive, and user-friendly interface.
