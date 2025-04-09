@@ -1,11 +1,11 @@
 <?php
     require_once 'BaseService.php';
-    require_once 'UserDao.php';
+    require_once __DIR__ . '/../Dao/UserDao.php';
 
-    class PaymentService extends BaseService{
+    class UserService extends BaseService{
         public function __construct(){
             $dao = new UserDao();
-            parent::_construct($dao);
+            parent::__construct($dao);
         }
 
         public function getByName($name){
@@ -27,11 +27,11 @@
                 throw new Exception("Password must be at least 6 characters long.");
             }
 
-            return $this->dao->insert($data);
+            return $this-> dao-> insert($data);
         }
 
         public function login($email, $password){
-            $user = $this->dao->getByEmail($email);
+            $user = $this-> dao-> getByEmail($email);
         
             if (!$user || !password_verify($password, $user['password'])) {
                 throw new Exception("Invalid email or password.");

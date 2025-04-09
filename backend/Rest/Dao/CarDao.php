@@ -20,6 +20,13 @@
             return $stmt->fetchAll();
         }
 
+        public function getAvailableByBrand($brand){
+            $stmt = $this->connection->prepare("SELECT * FROM car WHERE brand = :brand AND status = 'Available'");
+            $stmt->bindParam(':brand', $brand);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }        
+
         public function getByYear($year){
             $stmt = $this->connection->prepare("SELECT * FROM car WHERE year = :year");
             $stmt->bindParam(':year', $year);

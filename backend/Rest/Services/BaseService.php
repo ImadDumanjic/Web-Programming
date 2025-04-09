@@ -1,6 +1,4 @@
 <?php
-    require_once 'BaseDao.php';
-
     class BaseService{
         protected $dao;
     

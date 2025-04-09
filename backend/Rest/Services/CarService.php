@@ -1,11 +1,11 @@
 <?php
     require_once 'BaseService.php';
-    require_once 'CarDao.php';
+    require_once __DIR__ . '/../Dao/CarDao.php';
 
     class CarService extends BaseService{
         public function __construct(){
             $dao = new CarDao();
-            parent::_construct($dao);
+            parent::__construct($dao);
         }
 
         public function getByModel($model){
@@ -14,6 +14,10 @@
 
         public function getByBrand($brand){
             return $this -> dao -> getByBrand($brand);
+        }
+
+        public function getAvailableByBrand($brand){
+            return $this->dao->getAvailableByBrand($brand);
         }
 
         public function getByYear($year){

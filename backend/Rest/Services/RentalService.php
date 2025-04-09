@@ -1,12 +1,12 @@
 <?php
     require_once 'BaseService.php';
-    require_once 'RentalDao.php';
-    require_once 'CarDao.php';
+    require_once __DIR__ . '/../Dao/RentalDao.php';
+    require_once __DIR__ . '/../Dao/CarDao.php';
 
     class RentalService extends BaseService{
         public function __construct(){
             $dao = new RentalDao();
-            parent::_construct($dao);
+            parent::__construct($dao);
             $this -> carDao = new CarDao();
         }
 
@@ -25,7 +25,7 @@
             $rental_id = $this -> dao -> insert($data);
             $this->carDao->updateStatus($data['car_id'], 'Rented');
 
-            return $rentalId;
+            return $rental_id;
         }
 
         public function endRent($rental_id){
