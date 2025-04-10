@@ -28,7 +28,7 @@ Flight::route('DELETE /payment/@id', function($id){
 });
 
 //process a payment
-Flight::route('POST /payment', function(){
+Flight::route('POST /payment/process', function(){
     $data = Flight::request() -> data -> getData();
 
     try{

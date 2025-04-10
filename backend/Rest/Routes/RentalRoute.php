@@ -28,7 +28,7 @@ Flight::route('DELETE /rent/@id', function($id){
 });
 
 //start a rent
-Flight::route('POST /rental', function(){
+Flight::route('POST /rent', function(){
     $data = Flight::request()->data->getData();
 
     try{
@@ -40,7 +40,7 @@ Flight::route('POST /rental', function(){
 });
 
 //end a rent
-Flight::route('PUT /rental/end/@id', function($id){
+Flight::route('PUT /rent/end/@id', function($id){
     try {
         Flight::rentalService() -> endRent($id);
         Flight::json(["message" => "Rental ended successfully."]);

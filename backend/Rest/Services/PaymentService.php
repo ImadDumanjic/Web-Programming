@@ -13,7 +13,7 @@
                 throw new Exception("Amount cannot be zero or less!");
             }
 
-            $allowedPaymentMethods = ['cash', 'card', 'PayPal'];
+            $allowedPaymentMethods = ['Cash', 'Card', 'PayPal'];
             if(!in_array($data['payment_method'], $allowedPaymentMethods)){
                 throw new Exception("The payment method is not allowed. Please try with the ones suggested!");
             }

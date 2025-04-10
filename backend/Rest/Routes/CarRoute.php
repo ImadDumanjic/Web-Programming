@@ -7,9 +7,9 @@ Flight::route('GET /car', function(){
     $brand = Flight::request() -> query['brand'] ?? null;
 
     if($model){
-        Flight::json(Flight::carService() -> getbyModel($model));
+        Flight::json(Flight::carService() -> getByModel($model));
     } else if($year){
-        Flight::json(Flight::carService() -> getbyYear($year));
+        Flight::json(Flight::carService() -> getByYear($year));
     } else if($brand){
         Flight::json(Flight::carService() -> getByBrand($brand));
     } else{
@@ -37,4 +37,22 @@ Flight::route('PUT /car/@id', function($id){
 //delete a car
 Flight::route('DELETE /car/@id', function($id){
     Flight::json(Flight::carService() -> delete($id));
+});
+
+//rent a car
+Flight::route('PUT /car/rent/@id', function($id){
+    try {
+        Flight::json(Flight::carService()->rentCar($id));
+    } catch (Exception $e) {
+        Flight::json(["error" => $e->getMessage()], 400);
+    }
+});
+
+//return a car
+Flight::route('PUT /car/return/@id', function($id){
+    try {
+        Flight::json(Flight::carService()->returnCar($id));
+    } catch (Exception $e) {
+        Flight::json(["error" => $e->getMessage()], 400);
+    }
 });

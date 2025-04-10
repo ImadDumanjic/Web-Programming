@@ -25,13 +25,13 @@ Flight::route('POST /branch', function(){
     Flight::json(Flight::branchService() -> create($data));
 });
 
-//update a branch by ID
+//update a branch by id
 Flight::route('PUT /branch/@id', function($id){
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::branchService() -> update($id, $data));
 });
 
-//delete a car
+//delete a branch
 Flight::route('DELETE /branch/@id', function($id){
     Flight::json(Flight::branchService() -> delete($id));
 });
