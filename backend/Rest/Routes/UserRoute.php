@@ -15,7 +15,7 @@ Flight::route('GET /user', function(){
 });
 
 //get user by id
-Flight::route('GET/user/@id', function($id){
+Flight::route('GET /user/@id', function($id){
     Flight::json(Flight::userService() -> getById($id));
 });
 

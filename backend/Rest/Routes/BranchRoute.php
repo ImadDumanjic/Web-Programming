@@ -15,7 +15,7 @@ Flight::route('GET /branch', function(){
 });
 
 //get branch by id
-Flight::route('GET/branch/@id', function($id){
+Flight::route('GET /branch/@id', function($id){
     Flight::json(Flight::branchService() -> getById($id));
 });
 

@@ -19,12 +19,12 @@ Flight::route('POST /rent', function(){
 //update a rent by ID
 Flight::route('PUT /rent/@id', function($id){
     $data = Flight::request() -> data -> getData();
-    Flight::json(Flight::rentService() -> update($id, $data));
+    Flight::json(Flight::rentalService() -> update($id, $data));
 });
 
 //delete a rent by specific id
 Flight::route('DELETE /rent/@id', function($id){
-    Flight::json(Flight::rentService() -> delete($id));
+    Flight::json(Flight::rentalService() -> delete($id));
 });
 
 //start a rent

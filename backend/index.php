@@ -28,3 +28,5 @@ Flight::route('GET /test', function() {
 });
 
 Flight::start();
+
+
