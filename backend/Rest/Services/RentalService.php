@@ -32,7 +32,7 @@
             $rental = $this -> dao -> getById($rental_id);
 
             if(empty($rental) || $rental['status'] !== 'Active'){
-                throw new Exception("Rental is not found, or it has already been completed");
+                throw new Exception("Rental is not found, or it has already been completed!");
             }
 
             $this -> dao -> update($rental_id, ['status' => 'Completed']);

@@ -16,10 +16,6 @@
             return $this -> dao -> getByBrand($brand);
         }
 
-        public function getAvailableByBrand($brand){
-            return $this->dao->getAvailableByBrand($brand);
-        }
-
         public function getByYear($year){
             return $this -> dao -> getByYear($year);
         }
@@ -35,11 +31,11 @@
                 throw new Exception("Car is currently not available, as it has been already rented!");
             }
 
-            return $this->dao->updateStatus($car_id, 'Rented');
+            return $this -> dao -> updateStatus($car_id, 'Rented');
         }
 
         public function returnCar($car_id){
-            $car = $this->dao->getById($car_id);
+            $car = $this -> dao-> getById($car_id);
         
             if (empty($car)) {
                 throw new Exception("Car not found.");
