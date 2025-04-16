@@ -26,7 +26,7 @@
     // $user = $user_dao->getByName("Imad Dumanjić");
     // print_r($user);
 
-    // insert user
+    //insert user
     // $user_dao->insert([
     //     'name' => 'Aiša Gaab',
     //     'email' => 'aisa.gaab@gmail.com',
@@ -37,7 +37,7 @@
     // ]);
 
     // delete user
-    // $user = $user_dao->delete(26);
+    // $user = $user_dao->delete(29);
 
     // get user by type
     // $user2 = $user_dao->getByUserType("Customer");

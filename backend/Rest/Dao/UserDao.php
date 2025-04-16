@@ -19,5 +19,13 @@
             $stmt->execute();
             return $stmt->fetchAll();
         }
+
+        public function getByEmail($email){
+            $stmt = $this->connection->prepare("SELECT * FROM user WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return $stmt->fetch(); 
+        }
+        
     }
 ?>
