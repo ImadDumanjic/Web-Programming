@@ -22,6 +22,7 @@
  * )
  */
 Flight::route('GET /rent', function(){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::rentalService() -> getAll());
 });
 
@@ -41,6 +42,7 @@ Flight::route('GET /rent', function(){
  * )
  */
 Flight::route('GET /rent/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::rentalService() -> getById($id));
 });
 
@@ -57,6 +59,8 @@ Flight::route('GET /rent/@id', function($id){
  * )
  */
 Flight::route('POST /rent/create', function(){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
+
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::rentalService() -> create($data));
 });
@@ -80,6 +84,7 @@ Flight::route('POST /rent/create', function(){
  * )
  */
 Flight::route('PUT /rent/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::rentalService() -> update($id, $data));
 });
@@ -99,6 +104,7 @@ Flight::route('PUT /rent/@id', function($id){
  * )
  */
 Flight::route('DELETE /rent/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     Flight::json(Flight::rentalService() -> delete($id));
 });
 
@@ -116,6 +122,7 @@ Flight::route('DELETE /rent/@id', function($id){
  * )
  */
 Flight::route('POST /rent', function(){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request()->data->getData();
 
     try{
@@ -142,6 +149,7 @@ Flight::route('POST /rent', function(){
  * )
  */
 Flight::route('PUT /rent/end/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     try {
         Flight::rentalService() -> endRent($id);
         Flight::json(["message" => "Rental ended successfully."]);

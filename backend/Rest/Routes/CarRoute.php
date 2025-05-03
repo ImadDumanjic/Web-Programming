@@ -48,6 +48,8 @@
  * )
  */
 Flight::route('GET /car', function(){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
+
     $model = Flight::request() -> query['model'] ?? null;
     $year = Flight::request() -> query['year'] ?? null;
     $brand = Flight::request() -> query['brand'] ?? null;
@@ -79,6 +81,7 @@ Flight::route('GET /car', function(){
  * )
  */
 Flight::route('GET /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::carService() -> getById($id));
 });
 
@@ -95,6 +98,7 @@ Flight::route('GET /car/@id', function($id){
  * )
  */
 Flight::route('POST /car', function(){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::carService() -> create($data));
 });
@@ -119,6 +123,7 @@ Flight::route('POST /car', function(){
  * )
  */
 Flight::route('PUT /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::carService() -> update($id, $data));
 });
@@ -138,6 +143,7 @@ Flight::route('PUT /car/@id', function($id){
  * )
  */
 Flight::route('DELETE /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     Flight::json(Flight::carService() -> delete($id));
 });
 
@@ -157,6 +163,7 @@ Flight::route('DELETE /car/@id', function($id){
  * )
  */
 Flight::route('PUT /car/rent/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     try {
         Flight::json(Flight::carService()->rentCar($id));
     } catch (Exception $e) {
@@ -180,6 +187,7 @@ Flight::route('PUT /car/rent/@id', function($id){
  * )
  */
 Flight::route('PUT /car/return/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     try {
         Flight::json(Flight::carService()->returnCar($id));
     } catch (Exception $e) {

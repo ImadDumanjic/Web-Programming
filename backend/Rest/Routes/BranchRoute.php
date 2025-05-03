@@ -36,6 +36,8 @@
  * )
  */
 Flight::route('GET /branch', function(){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
+
     $name = Flight::request()->query['name'] ?? null;
     $location = Flight::request()->query['location'] ?? null;
 
@@ -64,6 +66,7 @@ Flight::route('GET /branch', function(){
  * )
  */
 Flight::route('GET /branch/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::branchService() -> getById($id));
 });
 
@@ -80,6 +83,7 @@ Flight::route('GET /branch/@id', function($id){
  * )
  */
 Flight::route('POST /branch', function(){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::branchService() -> create($data));
 });
@@ -103,6 +107,7 @@ Flight::route('POST /branch', function(){
  * )
  */
 Flight::route('PUT /branch/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::branchService() -> update($id, $data));
 });
@@ -122,5 +127,6 @@ Flight::route('PUT /branch/@id', function($id){
  * )
  */
 Flight::route('DELETE /branch/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     Flight::json(Flight::branchService() -> delete($id));
 });

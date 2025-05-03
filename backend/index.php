@@ -9,6 +9,9 @@ require_once 'Rest/Services/RentalService.php';
 require_once 'Rest/Services/BranchService.php';
 require_once 'Rest/Services/PaymentService.php';
 require_once 'Rest/Services/AuthServices.php';
+require_once 'middleware/AuthMiddleware.php';
+require_once 'data/roles.php';
+
 
 
 // register services
@@ -17,7 +20,8 @@ Flight::register('carService', 'CarService');
 Flight::register('rentalService', 'RentalService');
 Flight::register('branchService', 'BranchService');
 Flight::register('paymentService', 'PaymentService');
-Flight::register('auth_service', 'AuthService');
+Flight::register('authService', 'AuthService');
+Flight::register('authMiddleware', 'AuthMiddleware');
 
 
 // routes
@@ -36,27 +40,22 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 Flight::route('/*', function() {
-    $path = Flight::request()->url;
-
-    if (strpos($path, '/auth/login') === 0 || strpos($path, '/auth/register') === 0 || strpos($path, '/test') === 0) {
-        return;
-    }
-
-    try {
-        $token = Flight::request()->getHeader('Authentication');
-
-        if (!$token) {
-            Flight::halt(401, 'Missing authentication header.');
+    if(
+        strpos(Flight::request() -> url, '/auth/login') === 0 ||
+        strpos(Flight::request() -> url, '/auth/register') === 0
+    ){
+        return TRUE;
+    } else{
+        try{
+            $token = Flight::request()->getHeader("Authentication");
+            if(Flight::auth_middleware()->verifyToken($token))
+                return TRUE;
+        } catch (\Exception $e) {
+            Flight::halt(401, $e->getMessage());
         }
-
-        $decoded = JWT::decode($token, new Key(Config::JWT_SECRET(), 'HS256'));
-
-        Flight::set('user', $decoded->user); 
-    } catch (Exception $e) {
-        Flight::halt(401, $e->getMessage());
     }
-});
-
+ });
+ 
 Flight::start();
 
 

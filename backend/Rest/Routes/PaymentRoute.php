@@ -22,6 +22,7 @@
  * )
  */
 Flight::route('GET /payment', function(){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::paymentService() -> getAll());
 });
 
@@ -41,6 +42,7 @@ Flight::route('GET /payment', function(){
  * )
  */
 Flight::route('GET /payment/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::paymentService() -> getById($id));
 });
 
@@ -57,6 +59,7 @@ Flight::route('GET /payment/@id', function($id){
  * )
  */
 Flight::route('POST /payment', function(){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::paymentService() -> create($data));
 });
@@ -80,6 +83,7 @@ Flight::route('POST /payment', function(){
  * )
  */
 Flight::route('PUT /payment/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::paymentService() -> update($id, $data));
 });
@@ -99,6 +103,7 @@ Flight::route('PUT /payment/@id', function($id){
  * )
  */
 Flight::route('DELETE /payment/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
     Flight::json(Flight::paymentService() -> delete($id));
 });
 
@@ -116,6 +121,9 @@ Flight::route('DELETE /payment/@id', function($id){
  * )
  */
 Flight::route('POST /payment/process', function(){
+
+    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
+
     $data = Flight::request() -> data -> getData();
 
     try{
