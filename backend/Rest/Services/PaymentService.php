@@ -9,16 +9,16 @@
         }
 
         public function processPayment($data){
-            if($data['amount'] <= 0){
+            if($data['total_price'] <= 0){
                 throw new Exception("Amount cannot be zero or less!");
             }
 
-            $allowedPaymentMethods = ['Cash', 'Card', 'PayPal'];
+            $allowedPaymentMethods = ['Cash', 'Credit Card', 'Debit Card', 'PayPal'];
             if(!in_array($data['payment_method'], $allowedPaymentMethods)){
                 throw new Exception("The payment method is not allowed. Please try with the ones suggested!");
             }
 
-            return $this->dao->insert($data);
+            return $this -> dao -> insert($data);
         }
     }
 ?>

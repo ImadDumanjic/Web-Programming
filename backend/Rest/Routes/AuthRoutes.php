@@ -41,9 +41,8 @@ use Firebase\JWT\Key;
  * )
  */
 Flight::route("POST /auth/register", function () {
-    $data = Flight::request()->data->getData();
-
-    $response = Flight::auth_service()->register($data);
+    $data = Flight::request() -> data -> getData();
+    $response = Flight::auth_service() -> register($data);
 
     if ($response['success']) {
         Flight::json([
@@ -80,9 +79,8 @@ Flight::route("POST /auth/register", function () {
  * )
  */
 Flight::route('POST /auth/login', function() {
-    $data = Flight::request()->data->getData();
-
-    $response = Flight::auth_service()->login($data);
+    $data = Flight::request() -> data -> getData();
+    $response = Flight::auth_service() -> login($data);
 
     if ($response['success']) {
         Flight::json([

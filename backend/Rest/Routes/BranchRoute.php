@@ -38,15 +38,15 @@
 Flight::route('GET /branch', function(){
     Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
 
-    $name = Flight::request()->query['name'] ?? null;
-    $location = Flight::request()->query['location'] ?? null;
+    $name = Flight::request() -> query['name'] ?? null;
+    $location = Flight::request() -> query['location'] ?? null;
 
     if ($name) {
-        Flight::json(Flight::branchService()->getByName($name));
+        Flight::json(Flight::branchService() -> getByName($name));
     } else if ($location) {
-        Flight::json(Flight::branchService()->getByLocation($location));
+        Flight::json(Flight::branchService() -> getByLocation($location));
     } else {
-        Flight::json(Flight::branchService()->getAll());
+        Flight::json(Flight::branchService() -> getAll());
     }
 });
 
@@ -83,7 +83,7 @@ Flight::route('GET /branch/@id', function($id){
  * )
  */
 Flight::route('POST /branch', function(){
-    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::branchService() -> create($data));
 });
@@ -107,10 +107,43 @@ Flight::route('POST /branch', function(){
  * )
  */
 Flight::route('PUT /branch/@id', function($id){
-    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::branchService() -> update($id, $data));
 });
+
+/**
+ * @OA\Patch(
+ *   path="/branch/{id}",
+ *   summary="Partially update a branch",
+ *   tags={"Branch"},
+ *   @OA\Parameter(
+ *     name="id",
+ *     in="path",
+ *     required=true,
+ *     @OA\Schema(type="integer")
+ *   ),
+ *   @OA\RequestBody(
+ *     required=true,
+ *     @OA\JsonContent(
+ *       type="object",
+ *       example={
+ *         "contact_number": "062345678",
+ *         "opening_hours": "09:00 - 18:00"
+ *       }
+ *     )
+ *   ),
+ *   @OA\Response(response=200, description="Branch updated successfully"),
+ *   @OA\Response(response=400, description="Invalid input or update failed"),
+ *   @OA\Response(response=403, description="Unauthorized access")
+ * )
+ */
+Flight::route('PATCH /branch/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
+    $data = Flight::request() -> data -> getData();
+    Flight::json(Flight::branchService() -> update($id, $data));
+});
+
 
 /**
  * @OA\Delete(
@@ -127,6 +160,6 @@ Flight::route('PUT /branch/@id', function($id){
  * )
  */
 Flight::route('DELETE /branch/@id', function($id){
-    Flight::auth_middleware() -> authorizeRoles(Roles::ADMIN);
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     Flight::json(Flight::branchService() -> delete($id));
 });

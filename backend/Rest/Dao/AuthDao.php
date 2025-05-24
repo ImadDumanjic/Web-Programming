@@ -7,10 +7,10 @@
         }
 
         public function getUserByEmail($email){
-            $stmt = $this-> connection -> prepare("SELECT * FROM user WHERE email = :email");
-            $stmt->bindParam(':email', $email);
-            $stmt->execute();
-            return $stmt->fetch();
+            $stmt = $this -> connection -> prepare("SELECT * FROM user WHERE email = :email");
+            $stmt -> bindParam(':email', $email);
+            $stmt -> execute();
+            return $stmt -> fetch();
         }
     }
 ?>

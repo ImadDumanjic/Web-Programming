@@ -7,17 +7,17 @@
         }
 
         public function getByName($name) {
-            $stmt = $this->connection->prepare("SELECT * FROM branch WHERE name = :name");
-            $stmt->bindParam(":name", $name);
-            $stmt->execute();
-            return $stmt->fetchAll();
+            $stmt = $this -> connection -> prepare("SELECT * FROM branch WHERE name = :name");
+            $stmt -> bindParam(":name", $name);
+            $stmt -> execute();
+            return $stmt->fetch();
         }
 
         public function getByLocation($location) {
-            $stmt = $this->connection->prepare("SELECT * FROM branch WHERE location = :location");
-            $stmt->bindParam(":location", $location);
-            $stmt->execute();
-            return $stmt->fetchAll();
+            $stmt = $this -> connection->prepare("SELECT * FROM branch WHERE location = :location");
+            $stmt -> bindParam(":location", $location);
+            $stmt -> execute();
+            return $stmt -> fetch();
         }
     }
 ?>

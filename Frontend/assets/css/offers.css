@@ -86,7 +86,7 @@
     max-width: 1200px;
 }
 
-.cars_container {
+.cars_container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
@@ -95,15 +95,16 @@
 }
 
 .car_box {
-    background: whitesmoke;
+    background-color:#F0F0F0;
     padding: 20px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 3px 9px rgba(0.1, 0.2, 0.3, 0.6);
 }
+
 .car_box img {
     width: 95%;
     height: 180px;
@@ -583,4 +584,3 @@
         padding: 10px;
     }
 }
-

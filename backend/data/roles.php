@@ -1,6 +1,6 @@
 <?php
 
 class Roles{
-    CONST ADMIN = "admin";
-    CONST CUSTOMER = "customer";
+    CONST ADMIN = "Admin";
+    CONST CUSTOMER = "Customer";
 }

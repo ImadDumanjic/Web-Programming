@@ -12,44 +12,50 @@
         <div class="tab-content mt-3" id="authTabsContent">
             <!-- Login Form -->
             <div class="tab-pane fade show active" id="login" role="tabpanel">
-                <form>
+                <form id="login-form" novalidate>
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Your Mail" required>
+                        <input type="email" class="form-control" id="loginEmail" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Your Password" required>
+                        <input type="password" class="form-control" id="loginPassword" name="password" required>
                     </div>
                     <button type="submit" class="loginbtn">Log In</button>
                 </form>
             </div>
             <!-- Register Form -->
             <div class="tab-pane fade" id="register" role="tabpanel">
-                <form>
+                <form id="register-form" novalidate>
                     <div class="mb-3">
-                        <label for="registerName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="registerName" placeholder="Your Name" required>
+                    <label for="registerName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="registerName" name="name" required>
                     </div>
+
                     <div class="mb-3">
-                        <label for="registerLastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="registerLastName" placeholder="Your Last Name" required>
+                    <label for="registerEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="registerEmail" name="email" required>
                     </div>
+
                     <div class="mb-3">
-                        <label for="dateInput" class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" id="dateInput">
+                    <label for="registerPhone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="registerPhone" name="phone" required>
                     </div>
+
                     <div class="mb-3">
-                        <label for="registerEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="registerEmail" placeholder="Your Mail" required>
+                    <label for="registerPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="registerPassword" name="password" required>
                     </div>
+
                     <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="registerPassword" placeholder="Your Password" required>
+                    <label for="registerAddress" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="registerAddress" name="address" required>
                     </div>
+
                     <button type="submit" class="loginbtn">Register</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+

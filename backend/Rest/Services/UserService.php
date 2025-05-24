@@ -17,7 +17,7 @@
         }
 
         public function registerUser($data){
-            $existing_user = $this->dao->getByEmail($data['email']);
+            $existing_user = $this -> dao -> getByEmail($data['email']);
         
             if ($existing_user) {
                 throw new Exception("The email is already taken, please consider a new one.");
@@ -29,17 +29,16 @@
         
             $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         
-            return $this->dao->insert($data);
+            return $this -> dao -> insert($data);
         }
         
 
         public function login($email, $password){
-            $user = $this-> dao-> getByEmail($email);
+            $user = $this -> dao-> getByEmail($email);
         
             if (!$user || !password_verify($password, $user['password'])) {
                 throw new Exception("Invalid email or password.");
             }
-        
             return $user;
         }
     }
