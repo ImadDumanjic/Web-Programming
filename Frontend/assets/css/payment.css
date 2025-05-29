@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    background-color: black !important;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+img.logo {
+  width: 240px !important;
+  height: 250px !important;
+  object-fit: contain;
+}
+
+#title{
+    font-family: "Syncopate", sans-serif;
+    font-size: 37px;                    
+    font-weight: 600;                   
+    color: #b8860b; 
+}
+
+#checkout-description {
+    padding-top: 5px;
+    font-family: 'Poppins', sans-serif;  
+    color: white;
+    font-size: 18px;
+}
+
+.row{
+    font-family: 'Poppins', sans-serif;  
+    color: white;
+}
+
+#confirm-button{
+    background-color: #b8860b;
+    border: none;
+    color: black;
+}
+
+#confirm-button:hover{
+    background-color: white;
+    border: none;
+    color: black;
+}
+
+.lh-condensed { line-height: 1.25; }

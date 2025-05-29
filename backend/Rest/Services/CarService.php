@@ -45,7 +45,7 @@
                 throw new Exception("Car is already available for rent.");
             }
         
-            return $this->dao->updateStatus($car_id, 'Available');
+            return $this -> dao -> updateStatus($car_id, 'Available');
         }
     }
 ?>

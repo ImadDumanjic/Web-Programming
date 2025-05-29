@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  background-image: url('https://wallpapers.com/images/featured/grey-5xvepms9fbbi0bmh.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+h2 {
+  font-family: "Syncopate", sans-serif;
+  font-size: 47px;                    
+  font-weight: 600;                   
+  color: #b8860b;                     
+  letter-spacing: 3px;                
+  text-align: center;                
+  margin-top: 20px;                
+}
+
+table th {
+  background-color: #1f1f2e;
+  color: white;
+}
+
+table td {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: black;
+}
+
+table tr:hover {
+  background-color: #e6f7ff;
+}
+
+.btn-warning {
+  background-color: #b8860b;
+  border: none;
+  color: black;
+}
+
+.btn-danger {
+  background-color: #780000;
+  border: none;
+}
+
+.table, .modal-content, .card {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: black;
+}
+
+.dataTables_wrapper .dataTables_paginate .page-item.active .page-link {
+  background-color: #202020;  
+  border-color: #202020;
+  color: white;
+}
+
+#carTable th, #carTable td {
+  font-size: 14px;
+  white-space: nowrap;    
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-switch{
+  margin-top: -25px;
+  margin-bottom: 40px;
+}
+
+#admin-view-cars{
+  background-color: #b8860b;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 8px;
+}
+
+#admin-view-users{
+  background-color: #b8860b;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 8px;
+}
+
+#admin-view-rentals{
+  background-color: #b8860b;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 8px;
+}
+
+#admin-view-branches{
+  background-color: #b8860b;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 8px;
+}
+
+#admin-view-messages{
+  background-color: #b8860b;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 8px;
+}
+
+#admin-view-payments{
+  background-color: #b8860b;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 8px;
+}
+
+#rentalTable_wrapper { 
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+#userTable_wrapper { 
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+#branchTable_wrapper { 
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+#contactTable_wrapper { 
+  margin-top: -10px;
+  margin-bottom: 50px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+#paymentTable_wrapper { 
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+

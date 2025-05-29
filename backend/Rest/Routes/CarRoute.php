@@ -48,6 +48,8 @@
  * )
  */
 Flight::route('GET /car', function(){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
+
     $model = Flight::request() -> query['model'] ?? null;
     $year = Flight::request() -> query['year'] ?? null;
     $brand = Flight::request() -> query['brand'] ?? null;
@@ -79,6 +81,7 @@ Flight::route('GET /car', function(){
  * )
  */
 Flight::route('GET /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::carService() -> getById($id));
 });
 
@@ -95,6 +98,7 @@ Flight::route('GET /car/@id', function($id){
  * )
  */
 Flight::route('POST /car', function(){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::carService() -> create($data));
 });
@@ -119,9 +123,44 @@ Flight::route('POST /car', function(){
  * )
  */
 Flight::route('PUT /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::carService() -> update($id, $data));
 });
+
+/**
+ * @OA\Patch(
+ *   path="/car/{id}",
+ *   summary="Partially update a car",
+ *   tags={"Car"},
+ *   @OA\Parameter(
+ *     name="id",
+ *     in="path",
+ *     required=true,
+ *     @OA\Schema(type="integer")
+ *   ),
+ *   @OA\RequestBody(
+ *     required=true,
+ *     @OA\JsonContent(
+ *       type="object",
+ *       example={
+ *         "engine": "3.0L Twin Turbo",
+ *         "status": "Completed",
+ *         "horsepower": 510
+ *       }
+ *     )
+ *   ),
+ *   @OA\Response(response=200, description="Car updated successfully"),
+ *   @OA\Response(response=400, description="Invalid input or update failed"),
+ *   @OA\Response(response=403, description="Unauthorized access")
+ * )
+ */
+Flight::route('PATCH /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
+    $data = Flight::request() -> data -> getData();
+    Flight::json(Flight::carService() -> update($id, $data));
+});
+
 
 /**
  * @OA\Delete(
@@ -138,6 +177,7 @@ Flight::route('PUT /car/@id', function($id){
  * )
  */
 Flight::route('DELETE /car/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     Flight::json(Flight::carService() -> delete($id));
 });
 
@@ -157,10 +197,11 @@ Flight::route('DELETE /car/@id', function($id){
  * )
  */
 Flight::route('PUT /car/rent/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     try {
-        Flight::json(Flight::carService()->rentCar($id));
+        Flight::json(Flight::carService() -> rentCar($id));
     } catch (Exception $e) {
-        Flight::json(["error" => $e->getMessage()], 400);
+        Flight::json(["error" => $e -> getMessage()], 400);
     }
 });
 
@@ -180,8 +221,9 @@ Flight::route('PUT /car/rent/@id', function($id){
  * )
  */
 Flight::route('PUT /car/return/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     try {
-        Flight::json(Flight::carService()->returnCar($id));
+        Flight::json(Flight::carService() -> returnCar($id));
     } catch (Exception $e) {
         Flight::json(["error" => $e->getMessage()], 400);
     }

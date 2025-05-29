@@ -29,8 +29,8 @@
 }
 
 #contact {
-    background-image: url('../img/background-con.jpg');
-    background-size: cover;
+    background-image: url('../img/background-rent3.jpg');
+    background-size: 110%;
     background-color: rgba(0, 0, 0, 0.6);
     background-position: center;
     background-blend-mode: darken;
@@ -50,7 +50,7 @@
 
 .contact_box_left {
     flex: 1;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.600);
     padding: 40px;
     display: flex;
     flex-direction: column;

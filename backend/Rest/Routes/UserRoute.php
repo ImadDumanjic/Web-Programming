@@ -36,6 +36,8 @@
  * )
  */
 Flight::route('GET /user', function(){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
+
     $name = Flight::request() -> query['name'] ?? null;
     $userType = Flight::request() -> query['userType'] ?? null;
 
@@ -64,6 +66,7 @@ Flight::route('GET /user', function(){
  * )
  */
 Flight::route('GET /user/@id', function($id){
+    Flight::auth_middleware() -> authorizeRoles([Roles::ADMIN, Roles::CUSTOMER]);
     Flight::json(Flight::userService() -> getById($id));
 });
 
@@ -80,6 +83,8 @@ Flight::route('GET /user/@id', function($id){
  * )
  */
 Flight::route('POST /user', function(){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
+
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::userService() -> create($data));
 });
@@ -103,9 +108,45 @@ Flight::route('POST /user', function(){
  * )
  */
 Flight::route('PUT /user/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
+
     $data = Flight::request() -> data -> getData();
     Flight::json(Flight::userService() -> update($id, $data));
 });
+
+/**
+ * @OA\Patch(
+ *   path="/user/{id}",
+ *   summary="Partially update user by ID",
+ *   tags={"User"},
+ *   security={{"bearerAuth":{}}},
+ *   @OA\Parameter(
+ *     name="id",
+ *     in="path",
+ *     required=true,
+ *     @OA\Schema(type="integer")
+ *   ),
+ *   @OA\RequestBody(
+ *     required=true,
+ *     @OA\JsonContent(
+ *       type="object",
+ *       example={
+ *         "phone": "+38762345678",
+ *         "address": "New Address 15, Mostar"
+ *       }
+ *     )
+ *   ),
+ *   @OA\Response(response=200, description="User updated successfully"),
+ *   @OA\Response(response=400, description="Invalid input or update failed"),
+ *   @OA\Response(response=403, description="Unauthorized access")
+ * )
+ */
+Flight::route('PATCH /user/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
+    $data = Flight::request() -> data -> getData();
+    Flight::json(Flight::userService() -> update($id, $data));
+});
+
 
 /**
  * @OA\Delete(
@@ -122,6 +163,7 @@ Flight::route('PUT /user/@id', function($id){
  * )
  */
 Flight::route('DELETE /user/@id', function($id){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     Flight::json(Flight::userService() -> delete($id));
 });
 
@@ -139,7 +181,8 @@ Flight::route('DELETE /user/@id', function($id){
  * )
  */
 Flight::route('POST /user/register', function(){
-    $data = Flight::request()->data->getData();
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
+    $data = Flight::request() -> data -> getData();
 
     try {
         $userId = Flight::userService()->registerUser($data);
@@ -167,6 +210,7 @@ Flight::route('POST /user/register', function(){
  * )
  */
 Flight::route('POST /user/login', function(){
+    Flight::auth_middleware() -> authorizeRole(Roles::ADMIN);
     $data = Flight::request() -> data -> getData();
 
     try {
