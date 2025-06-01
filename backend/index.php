@@ -1,4 +1,21 @@
 <?php
+$allowedOrigins = [
+    "https://luxury-drive-frontent-jubf7.ondigitalocean.app",
+    "http://127.0.0.1:5501"
+];
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
+    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+}
+
+header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authentication");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit();
+}
+
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 require './vendor/autoload.php';
@@ -24,7 +41,7 @@ Flight::register('contactMessageService', 'ContactMessageService');
 Flight::register('auth_service', 'AuthService');
 Flight::register('auth_middleware', 'AuthMiddleware');
 
- Flight::route('/*', function() {
+Flight::route('/*', function() {
     $url = Flight::request()->url;
 
     if (
@@ -49,8 +66,7 @@ Flight::register('auth_middleware', 'AuthMiddleware');
     }
 });
 
-
- // routes
+// routes
 require_once 'Rest/Routes/UserRoute.php';
 require_once 'Rest/Routes/CarRoute.php';
 require_once 'Rest/Routes/RentalRoute.php';
@@ -60,5 +76,3 @@ require_once 'Rest/Routes/ContactMessageRoute.php';
 require_once 'Rest/Routes/AuthRoutes.php';
 
 Flight::start();
-
-
