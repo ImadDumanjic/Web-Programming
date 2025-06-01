@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "/Config.php");
+require_once(__DIR__ . "/ConfigNew.php");
 require_once 'DatabaseConnection.php';
 
 class BaseDao {
