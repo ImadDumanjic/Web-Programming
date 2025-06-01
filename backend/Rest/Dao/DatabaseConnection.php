@@ -1,5 +1,5 @@
 <?php
-require_once 'ConfigNew.php';
+require_once(__DIR__ . '/config.php');
 
 class Database {
     private static $connection = null;
