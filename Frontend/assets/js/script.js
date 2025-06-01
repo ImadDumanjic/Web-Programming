@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         view: "home",
         load: "./pages/home.html",
         onReady: function(){
-            loadScript("./assets/js/home.js");
+            loadScript("assets/js/home.js");
         }
     });
 
@@ -50,8 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         view: "contact",
         load: "contact.html",
         onReady: function(){
-            loadCSS("./assets/css/contact.css");
-            console.log("Contact route onReady triggered");
+            loadCSS("assets/css/contact.css");
 
             $("#contact-form").validate({
             rules: {
@@ -125,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         view: "rent",
         load: "rent.html",
         onReady: function(){
-        loadCSS("./assets/css/rent.css");
+        loadCSS("assets/css/rent.css");
 
         $("#rent-form").validate({
         rules: {
@@ -242,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //         view: "payment",
     //         load: "payment.html",
     //         onReady: function () {
-    //             loadCSS("./assets/css/payment.css");
+    //             loadCSS("assets/css/payment.css");
     //             CarService.loadCars3();
 
     //             $("#payment-form").validate({
@@ -345,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
     view: "payment",
     load: "payment.html",
     onReady: function () {
-        loadCSS("./assets/css/payment.css");
+        loadCSS("assets/css/payment.css");
         CarService.loadCars3();
 
         setTimeout(() => {
@@ -403,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
     view: "admin",
     load: "admin.html",
     onReady: function(){
-        loadCSS("./assets/css/admin.css");
+        loadCSS("assets/css/admin.css");
 
         /*Car table display*/
         $('#carTable').DataTable({
