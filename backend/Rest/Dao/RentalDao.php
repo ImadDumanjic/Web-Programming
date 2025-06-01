@@ -14,5 +14,10 @@
             // Used the PDO in fetch() because I needed the result to be as an associative array, because the keys are the names of rows
             return $stmt -> fetch(PDO::FETCH_ASSOC);
         }
+
+        public function deleteByUserId($userId) {
+            $stmt = $this -> connection -> prepare("DELETE FROM rental WHERE user_id = :id");
+            $stmt -> execute(['id' => $userId]);
+        }
     }
 ?>

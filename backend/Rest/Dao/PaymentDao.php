@@ -11,5 +11,10 @@
             $stmt -> bindParam(':rental_id', $rental_id);
             return $stmt -> execute();
         }
+
+        public function deleteByUserId($userId) {
+            $stmt = $this -> connection -> prepare("DELETE FROM payment WHERE user_id = :id");
+            $stmt -> execute(['id' => $userId]);
+        }
     }
 ?>

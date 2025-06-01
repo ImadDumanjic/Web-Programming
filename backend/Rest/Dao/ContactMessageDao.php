@@ -42,4 +42,9 @@
             $stmt -> bindParam(":message", $data['message']);
             $stmt->execute();
         }
+
+        public function deleteByUserId($userId) {
+            $stmt = $this -> connection -> prepare("DELETE FROM contact_message WHERE user_id = :id");
+            $stmt -> execute(['id' => $userId]);
+        }
     }
