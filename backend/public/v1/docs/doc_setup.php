@@ -12,12 +12,12 @@
  * )
  *
  * @OA\Server(
- *     url=LOCALSERVER,
+ *     url=http://localhost/project/backend/,
  *     description="Local API server"
  * )
  *
  * @OA\Server(
- *     url=PRODSERVER,
+ *     url=https://luxury-drive-2w37n.ondigitalocean.app/index.php/,
  *     description="Production API server"
  * )
  *
