@@ -46,7 +46,7 @@ Flight::register('contactMessageService', 'ContactMessageService');
 Flight::register('auth_service', 'AuthService');
 Flight::register('auth_middleware', 'AuthMiddleware');
 
-/* Flight::route('/*', function() {
+Flight::route('/*', function() {
     $url = Flight::request()->url;
 
     if (
@@ -69,11 +69,11 @@ Flight::register('auth_middleware', 'AuthMiddleware');
     } catch (\Exception $e) {
         Flight::halt(401, "Unauthorized: " . $e->getMessage());
     }
-}); */
+}); 
 
-Flight::route('/', function() {
+/* Flight::route('/', function() {
    echo ("To je to");
-});
+}); */
 
 // routes
 require_once 'Rest/Routes/UserRoute.php';
