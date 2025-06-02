@@ -8,12 +8,13 @@ class Database {
         if (self::$connection === null) {
             try {
                 self::$connection = new PDO(
-                    "mysql:host=" . Config::DB_HOST() . ";dbname=" . Config::DB_NAME(),
+                    "mysql:host=" . Config::DB_HOST() . ";port=" . Config::DB_PORT() . ";dbname=" . Config::DB_NAME(),
                     Config::DB_USER(),
                     Config::DB_PASSWORD(),
                     [
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
                     ]
                 );
             } catch (PDOException $e) {
