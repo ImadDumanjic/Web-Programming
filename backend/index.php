@@ -11,7 +11,7 @@ use Firebase\JWT\Key;
 
 // ✅ Dozvoljene domene
 $allowedOrigins = [
-    "https://luxury-drive-frontend-jubf7.ondigitalocean.app",
+    "https://luxury-drive-frontent-jubf7.ondigitalocean.app",
     "http://127.0.0.1:5501"
 ];
 
