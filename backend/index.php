@@ -4,18 +4,21 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// ✅ Dozvoljene domene
 $allowedOrigins = [
-    "https://luxury-drive-frontent-jubf7.ondigitalocean.app",
+    "https://luxury-drive-frontend-jubf7.ondigitalocean.app",
     "http://127.0.0.1:5501"
 ];
 
+// ✅ Ako je zahtjev s neke od dozvoljenih domena — postavi CORS zaglavlja
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
     header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+    header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    header("Access-Control-Allow-Credentials: true"); // Ako koristiš cookies/token
 }
 
-header("Access-Control-Allow-Methods: GET, POST, PATCH, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authentication");
-
+// ✅ Preflight CORS (OPTIONS request)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(204);
     exit();
@@ -46,6 +49,7 @@ Flight::register('contactMessageService', 'ContactMessageService');
 Flight::register('auth_service', 'AuthService');
 Flight::register('auth_middleware', 'AuthMiddleware');
 
+// middleware zaštita
 Flight::route('/*', function() {
     $url = Flight::request()->url;
 
@@ -69,11 +73,7 @@ Flight::route('/*', function() {
     } catch (\Exception $e) {
         Flight::halt(401, "Unauthorized: " . $e->getMessage());
     }
-}); 
-
-/* Flight::route('/', function() {
-   echo ("To je to");
-}); */
+});
 
 // routes
 require_once 'Rest/Routes/UserRoute.php';
