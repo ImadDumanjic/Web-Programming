@@ -72,7 +72,7 @@ Flight::register('auth_middleware', 'AuthMiddleware');
 }); */
 
 Flight::route('/', function() {
-   
+   echo ("To je to");
 });
 
 // routes
