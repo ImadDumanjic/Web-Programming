@@ -15,7 +15,7 @@ class Config {
        return Config::get_env("DB_USER", 'doadmin');
    }
    public static function DB_PASSWORD() {
-       return Config::get_env("DB_PASSWORD", 'AVNS_wjzlLgdcTA7oBWV6CP_ ');
+       return Config::get_env("DB_PASSWORD", 'AVNS_wjzlLgdcTA7oBWV6CP_');
    }
    public static function DB_HOST() {
        return Config::get_env("DB_HOST", 'db-mysql-fra1-35233-do-user-22847389-0.d.db.ondigitalocean.com');
