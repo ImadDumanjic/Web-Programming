@@ -140,6 +140,16 @@ button:hover {
     color: black;
 }
 
+/*error message style*/
+.error-label {
+    color: black;
+    font-size: 12px; 
+    margin-top: 3px;
+    margin-left: 20px; 
+    font-family: "Poppins", sans-serif;
+    display: block;
+}
+
 @media (max-width: 1024px){
 
     #contact {

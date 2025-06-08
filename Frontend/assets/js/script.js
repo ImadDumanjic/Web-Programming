@@ -93,6 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     maxlength: "Message is too long"
             }},
 
+            //needed to add this function because the error messages were horrible. 
+            errorPlacement: function (error, element) {
+                error.addClass("error-label");
+                element.parent().append(error);
+            },
+
             submitHandler: function(form){
                 const userId = localStorage.getItem("userId");
 
@@ -110,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     });
-
 
     app.route({
         view: "registration",
@@ -182,6 +187,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             pickup_location: "Please select pickup location"
         },
+
+        //needed to add this function because the error messages were horrible. 
+        errorPlacement: function (error, element) {
+            error.addClass("error-label");
+            element.parent().append(error);
+        },
+
         submitHandler: function(form){
             $.blockUI({
             message: '<h3 style = "color: white;"><i class="fas fa-spinner fa-spin me-2"></i>Processing Data...</h3>',
@@ -237,107 +249,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    //     app.route({
-    //         view: "payment",
-    //         load: "payment.html",
-    //         onReady: function () {
-    //             loadCSS("assets/css/payment.css");
-    //             CarService.loadCars3();
+    // app.route({
+    // view: "payment",
+    // load: "payment.html",
+    // onReady: function () {
+    //     loadCSS("assets/css/payment.css");
+    //     CarService.loadCars3();
 
-    //             $("#payment-form").validate({
-    //                 rules: {
-    //                     firstName: "required",
-    //                     lastName: "required",
-    //                     email: {
-    //                         required: true,
-    //                         email: true
-    //                     },
-    //                     address: "required",
-    //                     country: "required",
-    //                     city: "required",
-    //                     zip: {
-    //                         required: true,
-    //                         digits: true
-    //                     },
-    //                     paymentMethod: "required",
-    //                     ccname: "required",
-    //                     ccnumber: {
-    //                         required: true,
-    //                         creditcard: true
-    //                     },
-    //                     "cc-expiration": "required",
-    //                     "cc-cvv": {
-    //                         required: true,
-    //                         digits: true,
-    //                         minlength: 3,
-    //                         maxlength: 3
-    //                     }
-    //                 },
-    //                 messages: {
-    //                     firstName: "Please enter your first name",
-    //                     lastName: "Please enter your last name",
-    //                     email: {
-    //                         required: "Please enter your email",
-    //                         email: "Please enter a valid email"
-    //                     },
-    //                     address: "Please enter your address",
-    //                     country: "Please select a country",
-    //                     city: "Please enter your city",
-    //                     zip: {
-    //                         required: "Please enter a ZIP code",
-    //                         digits: "ZIP must be numeric"
-    //                     },
-    //                     paymentMethod: "Please select a payment method",
-    //                     ccname: "Please enter cardholder name",
-    //                     ccnumber: {
-    //                         required: "Please enter card number",
-    //                         creditcard: "Please enter a valid credit card number"
-    //                     },
-    //                     "cc-expiration": "Please enter expiration date",
-    //                     "cc-cvv": {
-    //                         required: "Please enter CVC",
-    //                         digits: "CVC must be numeric",
-    //                         minlength: "CVC must be 3 digits",
-    //                         maxlength: "CVC must be 3 digits"
-    //                     }
-    //                 },
-    //                 submitHandler: function(form){
-    //                     const rentalId = localStorage.getItem("rental_id");
-    //                     const amount = localStorage.getItem("amount");
-    //                     const paymentMethod = $('input[name="paymentMethod"]:checked').val();
+    //     setTimeout(() => {
 
-    //                     if (!paymentMethod) {
-    //                         toastr.warning("Please select a payment method.");
-    //                         return;
-    //                     }
+    //         const form = document.getElementById("payment-form");
 
-    //                     if (!rentalId || !amount) {
-    //                         toastr.error("Missing rental or amount data.");
-    //                         return;
-    //                     }
-
-    //                     const paymentData = {
-    //                         rental_id: parseInt(rentalId),
-    //                         amount: parseFloat(amount),
-    //                         payment_method: paymentMethod,
-    //                         payment_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
-    //                     };
-
-    //                     PaymentService.createPayment(paymentData, function () {
-    //                         toastr.success("Payment successful! You will receive a confirmation email shortly.");
-    //                         form.reset();
-    //                         ["rental_id", "amount", "days", "selectedCarId"].forEach(key => localStorage.removeItem(key));
-
-    //                         setTimeout(() => {
-    //                             window.location.href = "index.html#home";
-    //                         }, 1000);
-    //                     }, function (error) {
-    //                         console.log("Payment error:", error);
-    //                         toastr.error("Payment failed!");
-    //                     });
-    //                 }
-    //             });
+    //         if (!form) {
+    //             console.error("Form not found!");
+    //             return;
     //         }
+
+    //         form.addEventListener("submit", function(event){
+    //             event.preventDefault();
+
+    //             const rentalId = localStorage.getItem("rental_id");
+    //             const amount = localStorage.getItem("amount");
+    //             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+
+    //             if (!paymentMethod) {
+    //                 toastr.warning("Please select a payment method.");
+    //                 return;
+    //             }
+
+    //             if (!rentalId || !amount) {
+    //                 toastr.error("Missing rental or amount data.");
+    //                 return;
+    //             }
+
+    //             const paymentData = {
+    //                 rental_id: parseInt(rentalId),
+    //                 amount: parseFloat(amount),
+    //                 payment_method: paymentMethod,
+    //                 payment_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
+    //             };
+
+    //             PaymentService.createPayment(paymentData, function () {
+    //                 toastr.success("Payment successful!");
+    //                 form.reset();
+    //                 ["rental_id", "amount", "days", "selectedCarId"].forEach(key => localStorage.removeItem(key));
+
+    //                 setTimeout(() => {
+    //                     window.location.href = "index.html#home";
+    //                 }, 1000);
+    //             }, function (error) {
+    //                 console.error("Payment error:", error);
+    //                 toastr.error("Payment failed!");
+    //             });
+    //         });
+    //         }, 100);
+    //     }
     // });
 
     app.route({
@@ -348,55 +314,143 @@ document.addEventListener("DOMContentLoaded", function () {
         CarService.loadCars3();
 
         setTimeout(() => {
+            const form = $("#payment-form");
 
-            const form = document.getElementById("payment-form");
-
-            if (!form) {
+            if (!form.length) {
                 console.error("Form not found!");
                 return;
             }
 
-            form.addEventListener("submit", function(event){
-                event.preventDefault();
+            form.validate({
+                rules: {
+                    firstName: {
+                        required: true,
+                        minlength: 2
+                    },
 
-                const rentalId = localStorage.getItem("rental_id");
-                const amount = localStorage.getItem("amount");
-                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+                    lastName: {
+                        required: true,
+                        minlength: 2
+                    },
 
-                if (!paymentMethod) {
-                    toastr.warning("Please select a payment method.");
-                    return;
+                    email: {
+                        required: true,
+                        email: true
+                    },
+
+                    address: {
+                        required: true
+                    },
+
+                    country: {
+                        required: true
+                    },
+
+                    city: {
+                        required: true
+                    },
+
+                    zip: {
+                        required: true,
+                        digits: true
+                    },
+
+                    paymentMethod: {
+                        required: true
+                    },
+
+                    ccname: {
+                        required: true
+                    },
+
+                    ccnumber: {
+                        required: true,
+                    },
+
+                    "cc-expiration": {
+                        required: true
+                    },
+
+                    "cc-cvv": {
+                        required: true,
+                        digits: true,
+                        minlength: 3,
+                        maxlength: 3
+                    }
+                },
+                messages: {
+                    firstName: "Please enter your first name",
+                    lastName: "Please enter your last name",
+                    email: "Please enter a valid email address",
+                    address: "Please provide your address",
+                    country: "Please select a country",
+                    city: "Please enter your city",
+                    zip: "Please enter a valid zip code",
+                    paymentMethod: "Please select a payment method",
+                    ccname: "Enter the cardholder name",
+                    ccnumber: "Enter a valid credit card number",
+                    
+                    //needed to use the "" because the name contains -
+                    "cc-expiration": "Enter the card expiration date",
+                    "cc-cvv": "Enter the CVC code"
+                },
+
+                //found template code on website, how to style the validation, so wanted to try it out
+                errorElement: "div",
+                errorClass: "invalid-feedback",
+                highlight: function (element) {
+                    $(element).addClass("is-invalid").removeClass("is-valid");
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("is-invalid").addClass("is-valid");
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("type") === "radio") {
+                        error.insertAfter(element.closest(".d-block"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+
+                submitHandler: function (formElement) {
+                    const rentalId = localStorage.getItem("rental_id");
+                    const amount = localStorage.getItem("amount");
+                    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+
+                    if (!paymentMethod) {
+                        toastr.warning("Please select a payment method.");
+                        return;
+                    }
+
+                    if (!rentalId || !amount) {
+                        toastr.error("Missing rental or amount data.");
+                        return;
+                    }
+
+                    const paymentData = {
+                        rental_id: parseInt(rentalId),
+                        amount: parseFloat(amount),
+                        payment_method: paymentMethod,
+                        payment_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                    };
+
+                    PaymentService.createPayment(paymentData, function () {
+                        toastr.success("Payment successful!");
+                        form[0].reset();
+                        ["rental_id", "amount", "days", "selectedCarId"].forEach(key => localStorage.removeItem(key));
+
+                        setTimeout(() => {
+                            window.location.href = "index.html#home";
+                        }, 1000);
+                    }, function (error) {
+                        console.error("Payment error:", error);
+                        toastr.error("Payment failed!");
+                    });
                 }
-
-                if (!rentalId || !amount) {
-                    toastr.error("Missing rental or amount data.");
-                    return;
-                }
-
-                const paymentData = {
-                    rental_id: parseInt(rentalId),
-                    amount: parseFloat(amount),
-                    payment_method: paymentMethod,
-                    payment_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
-                };
-
-                PaymentService.createPayment(paymentData, function () {
-                    toastr.success("Payment successful!");
-                    form.reset();
-                    ["rental_id", "amount", "days", "selectedCarId"].forEach(key => localStorage.removeItem(key));
-
-                    setTimeout(() => {
-                        window.location.href = "index.html#home";
-                    }, 1000);
-                }, function (error) {
-                    console.error("Payment error:", error);
-                    toastr.error("Payment failed!");
-                });
             });
             }, 100);
         }
     });
-
 
     app.route({
     view: "admin",
@@ -733,6 +787,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = Object.fromEntries(new FormData(this).entries());
             BranchService.addBranch(data);
         });
+        }
+    });
+
+    app.route({
+        view: "locations",
+        load: "locations.html",
+        onReady: function () {
+            loadCSS("assets/css/locations.css"); 
         }
     });
 

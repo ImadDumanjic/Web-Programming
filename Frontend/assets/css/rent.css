@@ -112,6 +112,16 @@ button:hover {
     color: black;
 }
 
+/*css for the error message*/
+.error-label {
+    color: black !important;
+    font-size: 12px !important;
+    margin-top: 3px !important;
+    margin-left: 20px !important;
+    font-family: "Poppins", sans-serif !important;
+    display: block !important;
+}
+
 @media (max-width: 1440px) {
     .contact_box {
         width: 75%;
