@@ -10,8 +10,8 @@ body {
 }
 
 img.logo {
-  width: 240px !important;
-  height: 250px !important;
+  width: 225px !important;
+  height: auto !important;
   object-fit: contain;
 }
 

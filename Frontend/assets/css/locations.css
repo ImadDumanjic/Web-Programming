@@ -1,0 +1,73 @@
+body {
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+img.logo {
+  width: 225px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+h2, h3, h5 {
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 500;                   
+    color: #b8860b; 
+}
+
+.location-title{
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 700;
+    color: #b8860b;
+    font-size: 35px;
+}
+
+.map-title{
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 700;
+    color: #b8860b;
+    font-size: 30px;
+}
+
+.location-description{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.map-description{
+    padding-top: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+.card-title {
+    font-weight: bold;
+    color: white; 
+    font-size: 23px;
+}
+
+.card-text {
+    font-size: 17px;
+    color: black; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-outline-primary {
+    color: #ffffff;
+    border-color: black;
+    border-radius: 10px;
+    padding: 13px 23px; 
+    font-size: 15px;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ffffff;
+    color: black; 
+}
+
+iframe {
+    border: none;
+    border-radius: 15px;
+}
