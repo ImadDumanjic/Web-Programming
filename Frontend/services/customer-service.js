@@ -150,6 +150,8 @@ let CustomerService = {
           RestClient.post("auth/register", entity, function () {
               $.unblockUI();
               toastr.success("Registration successful! You can now log in.");
+              $("#register-form")[0].reset();
+              window.location.hash = "#login";
           }, function (err) {
               $.unblockUI();
               toastr.error(err.responseJSON?.error || "Registration failed!");
